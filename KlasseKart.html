@@ -25,8 +25,14 @@
 
     function shuffleStudents() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Fisher-Yates shuffle algorithm
+      for (let i = students.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [students[i], students[j]] = [students[j], students[i]];
+      }
+
       let amount = 0;
-      students.sort(() => Math.random() - 0.5);
 
       students.forEach((student, index) => {
         ctx.beginPath();
